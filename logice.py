@@ -9,10 +9,6 @@ bit of logic programming style in this language.
 Sergio Salomon Garcia <sergio.salomon@alumnos.unican.es>
 """
 
-# import inspect	
-# para poder conocer en tiempo de ejecucion aridad de una funcion (regla)
-#	inspect.getargspec()
-
 
 class Logice():
 
@@ -24,7 +20,7 @@ class Logice():
 		self.__predicates = {}
 		# Mapa de hechos
 		self.__facts = {}
-		# Mapa de atomos (dominio)
+		# Conjunto de atomos (dominio)
 		self.__atoms = set()
 
 		# self.__rules = {} # TODO ?
@@ -111,9 +107,6 @@ class Logice():
 		elif self.__predicates[pred] != len(args):
 			raise NameError("Arity error.")
 
-		# TODO tratar variables libres ?
-		variables = self.__countvars(*args)
-
 		if pred in self.__facts:
 			self.__facts[pred].append(args)
 		else:
@@ -137,22 +130,14 @@ class Logice():
 
 		result = False
 
-		# TODO tratar variables
 		n = self.__countvars(*args)
 
 		if n == 0:
 			self.__facts[pred].remove(args)
 			result = True
+		# TODO tratar variables
 
 		return result
-
-
-	# def new_rule(self, name, f_rule):
-	# 	if type(f_rule) != function:
-	# 		raise NameError("The argument must be a function.")
-	# 	elif name not in self.__predicates:
-	# 		raise NameError("The predicate hasn't been defined.")
-	# 	self.__rules.append(f_rule)
 
 
 	def eval(self, pred, *args):
@@ -191,7 +176,6 @@ class Logice():
 			raise NameError("Arity error.")
 
 		free_vars = self.__count_notanon_vars(*args)
-		
 
 		if free_vars < 1:
 			raise NameError("There's no variables to solve.")
@@ -201,9 +185,8 @@ class Logice():
 
 	def query(self, pred, *args):
 		"""
-		Evalua o resuelve el objetivo lanzado, segun
-		la presencia (o no) de variables o variables 
-		anonimas.
+		Evalua o resuelve el objetivo lanzado, segun la 
+		presencia (o no) de variables o variables anonimas.
 		Actua como 'eval' y 'solv' al mismo tiempo.
 		"""
 		if pred not in self.__predicates:
@@ -234,6 +217,10 @@ class Logice():
 	##########################
 
 	def __evl(self, pred, *args):
+		"""
+		* Funcion interna.
+		
+		"""
 		return args in self.__facts[pred]
 
 
@@ -418,7 +405,8 @@ class Logice():
 		result = False
 
 		if type(term) == str:
-			if term.startswith('_') or term.startswith('?'): # '?var' variable ?
+			# '?var' deberia ser variable ?
+			if term.startswith('_') or term.startswith('?'):
 				result = True
 			elif (term.istitle() or term.isupper()) and not self.__islit(term):
 				result = True
@@ -490,8 +478,29 @@ def new():
 	return Logice()
 
 
+
+def processOutput(data, element):
+	"""
+	Procesa la salida de una consulta al motor logico, 
+	en caso de que su tipo sea una lista (consulta
+	con variables).
+	Tras el procesado, retorna una lista con los posibles
+	valores a unificar con la variable 'element'.
+	"""
+	if type(data) != list: raise NameError("Type Error.")
+
+	result = []
+	for x in data:
+		if element in x:
+			aux = x.lstrip(element + " = ")
+			result.append(aux)
+
+	return result
+
+
 ##########################
 
 # if __name__ == "__main__":
+
 
 

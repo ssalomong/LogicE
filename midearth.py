@@ -2,7 +2,7 @@
 Logic Engine for Python
 Logice
 
-TEST creating a knowledge base about the Middle-Earth.
+EXAMPLE creating a knowledge base about the Middle-Earth.
 ... A really simple one.
 
 
@@ -52,7 +52,7 @@ p_parnt("denethor", "boromir")
 p_parnt("primula", "frodo")
 
 
-# Show the actual state of the engine
+# Show the current state of the engine
 print engine
 print
 
@@ -81,11 +81,11 @@ def is_mother(eng, mother, child):
 		return False
 	else:
 		# The first result has to be processed
+		m = logice.processOutput(m, mother)
 		result = []
 		for x in m:
-			aux_m = x.lstrip(mother + " = ")
-			aux_c = eng.query("parent", aux_m, child)
-			result.append((x, aux_c,))
+			aux = eng.query("parent", x, child)
+			result.append((x, aux,))
 		return result
 
 mother = lambda x, y: is_mother(engine, x, y)
