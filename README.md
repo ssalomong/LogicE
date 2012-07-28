@@ -40,11 +40,7 @@ You can define rules too:
 
 ```python
 def is_mortal(someone):
-	if logic_engine.eval("is_man", someone): 
-		result = True
-	else: 
-		result = False
-	return result
+	return logic_engine.eval("is_man", someone)
 ```
 
 
