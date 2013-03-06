@@ -6,7 +6,7 @@ A logic engine implementation in Python that allows a
 bit of logic programming style in this language.
 
 
-Sergio Salomon Garcia <sergio.salomon@alumnos.unican.es>
+Sergio Salomon Garcia <sergio.salomon at alumnos.unican.es>
 """
 
 

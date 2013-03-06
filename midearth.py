@@ -6,7 +6,7 @@ EXAMPLE creating a knowledge base about the Middle-Earth.
 ... A really simple one.
 
 
-Sergio Salomon Garcia <sergio.salomon@alumnos.unican.es>
+Sergio Salomon Garcia <sergio.salomon at alumnos.unican.es>
 """
 import logice
 
