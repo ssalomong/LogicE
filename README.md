@@ -7,7 +7,7 @@ Sergio Salomon Garcia, *sergio.salomon at alumnos.unican.es*
 
 
 Notice: a better version in a more object-oriented style is in progress.
-The actual handling with strings is evil!
+The current internal handling with strings is evil!
 
 
 Introduction
