@@ -3,7 +3,7 @@ LogicE
 
 **A Logic Engine for Python**
 
-Sergio Salomon Garcia, <sergio.salomon at alumnos.unican.es>
+Sergio Salomon Garcia, *sergio.salomon at alumnos.unican.es*
 
 
 Introduction
