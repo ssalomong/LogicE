@@ -6,6 +6,10 @@ LogicE
 Sergio Salomon Garcia, *sergio.salomon at alumnos.unican.es*
 
 
+Notice: a better version in a more object-oriented style is in progress.
+The actual handling with strings is evil!
+
+
 Introduction
 -----------
 
@@ -31,6 +35,8 @@ Then, you can define new logical predicates and assert some facts:
 
 ```python
 logic_engine.new_pred("is_man", 1)
+#	is_man/1
+#	is_man(?Something)
 
 logic_engine.new_fact("is_man", "socrates")
 logic_engine.new_fact("is_man", "plato")
