@@ -6,8 +6,8 @@ LogicE
 Sergio Salomon Garcia, *sergio.salomon at alumnos.unican.es*
 
 
-Notice: a better version in a more object-oriented style is in progress.
-The current internal handling with strings is evil!
+*Notice: a better version in a more object-oriented style is in progress.
+The current internal handling with strings is evil!*
 
 
 Introduction
